@@ -30,10 +30,7 @@
                     </div>
                 </div>
                 <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                    <!-- online builder btn  -->
-                    <!-- <li class="flex items-center">
-                        <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
-                      </li> -->
+                   
                     <li class="flex items-center">
                         <a href="../pages/sign-in.html"
                             class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
@@ -157,358 +154,270 @@
         </div>
     </nav>
 
-    <div class="w-full px-6 py-6 mx-auto">
-        <!-- card 2 -->
-        <div class="flex flex-wrap -mx-3">
-            <div class="flex-none w-full max-w-full px-3">
-                <div
-                    class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <h6>Projects table</h6>
+
+
+    <div class="flex flex-wrap my-6 ">
+        <!-- card 1 -->
+
+        <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:w-1/2 md:flex-none lg:w-2/3 lg:flex-none">
+            <div
+                class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+                    <div class="flex flex-wrap mt-0 -mx-3">
+                        <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
+                            <h6>Book Lend</h6>
+                            <p class="mb-0 text-sm leading-normal">
+                                <i class="fa fa-check text-cyan-500"></i>
+                                <span class="ml-1 font-semibold">30 returns made</span> this month
+                            </p>
+                        </div>
+                        <div class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
+                            <div class="relative pr-6 lg:float-right">
+                                <a dropdown-trigger class="cursor-pointer" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v text-slate-400"></i>
+                                </a>
+                                <p class="hidden transform-dropdown-show"></p>
+
+                                <ul dropdown-menu
+                                    class="z-100 text-sm transform-dropdown shadow-soft-3xl duration-250 before:duration-350 before:font-awesome before:ease-soft min-w-44 -ml-34 before:text-5.5 pointer-events-none absolute top-0 m-0 mt-2 list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:top-0 before:right-7 before:left-auto before:z-40 before:text-white before:transition-all before:content-['\f0d8']">
+                                    <li class="relative">
+                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
+                                            href="javascript:;">Action</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
+                                            href="javascript:;">Another action</a>
+                                    </li>
+                                    <li class="relative">
+                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
+                                            href="javascript:;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex-auto px-0 pt-0 pb-2">
-                        <div class="p-0 overflow-x-auto">
-                            <table
-                                class="items-center justify-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                                <thead class="align-bottom">
-                                    <tr>
-                                        <th
-                                            class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Project</th>
-                                        <th
-                                            class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Budget</th>
-                                        <th
-                                            class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Status</th>
-                                        <th
-                                            class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Completion</th>
-                                        <th
-                                            class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap">
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="spotify" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Spotify</h6>
-                                                </div>
+                </div>
+                <div class="flex-auto p-6 px-0 pb-2">
+                    <div class="overflow-x-auto">
+                        <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <thead class="align-bottom">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        username</th>
+                                    <th
+                                        class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        Rent Date</th>
+                                    <th
+                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        Return Date</th>
+                                    <th
+                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="./assets/img/small-logos/logo-xd.svg"
+                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                    alt="xd" />
                                             </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$2,500</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">working</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">60%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal">Fathir Akmal Burhanudin</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
+                                    </td>
+                                    <td
+                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
+                                    </td>
+                                    <td
+                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="w-3/4 mx-auto">
+                                            <button type="button"
+                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="./assets/img/small-logos/logo-atlassian.svg"
+                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                    alt="atlassian" />
+                                            </div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal">Fathir Akmal Burhanudin</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
+                                    </td>
+                                    <td
+                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
+                                    </td>
+                                    <td
+                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="w-3/4 mx-auto">
+                                            <button type="button"
+                                                class="text-white bg-gradient-to-br from-pink-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Not
+                                                Complete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="./assets/img/small-logos/logo-spotify.svg"
+                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                    alt="spotify" />
+                                            </div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal">Faturahman Abdul Rahad</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
+                                    </td>
+                                    <td
+                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
+                                    </td>
+                                    <td
+                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="w-3/4 mx-auto">
+                                            <button type="button"
+                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="./assets/img/small-logos/logo-jira.svg"
+                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                    alt="jira" />
+                                            </div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal">Nama Lengkap</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
+                                    </td>
+                                    <td
+                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
+                                    </td>
+                                    <td
+                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="w-3/4 mx-auto">
+                                            <button type="button"
+                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="./assets/img/small-logos/logo-invision.svg"
+                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                    alt="invision" />
+                                            </div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal">Nama kamu disini</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
+                                    </td>
+                                    <td
+                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-0 whitespace-nowrap">
+                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
+                                    </td>
+                                    <td
+                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                        <div class="w-3/4 mx-auto">
+                                            <button type="button"
+                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- card 2 -->
+
+        <div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none">
+            <div
+                class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                <div
+                    class="flex justify-between border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+                    <div>
+                        <h6>Categories</h6>
+                        <p class="text-sm leading-normal">
+                            <i class="fa-solid fa-people-line text-lime-500"></i>
+                            <span class="font-semibold">12</span> Category
+                        </p>
+                    </div>
+                    <button data-modal-target="add-category" data-modal-toggle="add-category" type="button" class="text-sm text-purple-500 font-medium">Add new</button>
+                </div>
+                <div class="flex-auto p-4"style="max-height: 350px; overflow-y: auto;">
+                    <div
+                        class="before:border-r-solid relative before:absolute before:top-0 before:left-4 ">
+                        <div class="relative mb-4 mt-0 ">
+                            <div class=" pt-1.4 lg:max-w-120 relative -top-1.5 w-auto ">
+                                <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                                    <tbody class="">
+                                        @foreach ($categories as $category)
+                                        <tr class="flex justify-between border-b whitespace-nowrap">
+                                            <td class="p-2 align-middle bg-transparent ">
+                                                <div class="flex px-2 py-1">
+                                                    <div class="flex flex-col justify-center">
+                                                        <h6 class="mb-0 text-sm leading-normal">{{ $category->name }}</h6>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-invision.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="invision" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Invision</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$5,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">done</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">100%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                            </td>
+                                            <td class="p-2 align-middle bg-transparent ">
+                                                <div class="flex px-2 py-1">
+                                                    <div class="flex flex-col justify-center">
+                                                        <i class="fa-solid fa-trash hover:text-red-400 cursor-pointer"></i>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-jira.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="jira" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Jira</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$3,400</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">canceled</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">30%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-red-600 to-rose-400 -mt-0.38 w-3/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="30" aria-valuemin="0"
-                                                            aria-valuemax="30"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-slack.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="slack" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Slack</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$1,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">canceled</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">0%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-0 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                                            aria-valuemax="0"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-webdev.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="webdev" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Webdev</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$14,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">working</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">80%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-4/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                                            aria-valuemax="80"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-xd.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="xd" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Adobe XD</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$2,300</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">done</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">100%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="pt-4">
-            <div class="w-full px-6 mx-auto">
-                <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-                    <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                        <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear() + ",");
-                            </script>
-                            made with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-semibold text-slate-700"
-                                target="_blank">Creative Tim</a>
-                            for a better web.
-                        </div>
-                    </div>
-                    <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                        <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://creative-tim.com/blog"
-                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license"
-                                    class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
-                                    target="_blank">License</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
+
+
     <div fixed-plugin>
         <a fixed-plugin-button
             class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
