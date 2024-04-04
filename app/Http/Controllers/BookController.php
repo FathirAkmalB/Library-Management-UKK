@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +14,9 @@ class BookController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $categories = Category::all();
 
-        return view('User.book', compact('user'));
+        return view('User.book', ['user' => $user, 'categories' => $categories]);
     }
 
     /**

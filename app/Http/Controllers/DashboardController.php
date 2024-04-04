@@ -35,8 +35,9 @@ class DashboardController extends Controller
     public function indexBook(){
 
         $user = Auth::user();
+        $categories = Category::all();
 
-        return view('User.book', compact('user'));
+        return view('User.book', ['user' => $user, 'categories' => $categories]);
 
     }
 }

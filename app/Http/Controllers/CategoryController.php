@@ -28,7 +28,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|max:100',
+        ]);
+
+        $category = [
+            'name' => $request->name
+        ];
+
+        Category::create($category);
+
+        return redirect()->route('books');
     }
 
     /**
