@@ -25,8 +25,19 @@ class UserSeeder extends Seeder
 
         // Memilih satu role secara acak dari daftar role yang ada
         $randomRole = $roles->random();
-        $avatarPath = Storage::disk('public')->putFile('avatar', storage_path('app/public/avatar/' . 'default.jpg'));
+        $avatarPath = Storage::disk('public')->putFile('avatar', storage_path('app/public/avatar/' . 'defaultProfile.png'));
 
+
+
+        // $avatarDefaultPath = public_path('storage/avatar/default.jpg');
+        // if (!file_exists($avatarDefaultPath)) {
+        //     // Pastikan direktori avatar ada sebelum menyimpan file default
+        //     if (!file_exists(public_path('storage/avatar'))) {
+        //         mkdir(public_path('storage/avatar'), 0755, true);
+        //     }
+        //     // Copy file default.jpg ke direktori avatar
+        //     copy(storage_path('avatar/default.jpg'), $avatarDefaultPath);
+        // }
 
         // Membuat seeder untuk user dengan role yang dipilih secara acak
         User::create([

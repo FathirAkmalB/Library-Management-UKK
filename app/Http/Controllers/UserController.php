@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,10 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $userData = User::all();
-        // dd($userData);  
-        return view('Create.create_user', ['user' => $user, 'userData' => $userData]);
+        //
     }
 
     /**
@@ -24,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();   
+        $user = Auth::user();
 
         return view('User.users', compact('user'));
     }
@@ -33,23 +31,38 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validasi input
-    $request->validate([
-        'username' => ['required|unique:users'],
-        'password' => ['required'],
-        'phone' => ['required'],
-        'address' => ['required'],
-        'avatar' => ['required'],
-        'status' => ['required'],
-        'role_id' => ['required']
-    ]);
+    {
+        // Validasi input
+        $request->validate([
+            'username' => ['required', 'string', 'max:25'],
+            'password' => ['required', 'string', 'min:6'],
+            'phone' => ['max:255'],
+            'address' => ['required', 'max:255'],
+            'avatar' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2000'],
+        ]);
 
-    // Buat user baru
-    User::create($request->all());
+        // Buat user baru
+        $data = [
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'role_id' => 2,
+        ];
 
-    return view('User.users', );
-}
+        // Simpan gambar di direktori 'avatar' di storage public
+        if ($request->hasFile('avatar')) {
+            $fileName = uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
+            $pathImage = $request->file('avatar')->storeAs('avatar', $fileName, 'public');
+            $data['avatar'] = $pathImage;
+        } else {
+            // Jika tidak ada file avatar yang diunggah, gunakan avatar default
+            $data['avatar'] = 'avatar/defaultProfile.png';
+        }
+
+        User::create($data);
+        return redirect()->route('users_tab');
+    }
 
 
     /**
