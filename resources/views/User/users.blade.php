@@ -169,7 +169,7 @@
                             <h6>Users Table List</h6>
                         </div>
                         <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button"
+                            <button data-modal-target="create-user" data-modal-toggle="create-user" type="button"
                                 class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs  px-5 py-2.5 text-center me-2 mb-2">Create User Account</button>
                         </div>
                     </div>

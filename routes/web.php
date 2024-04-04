@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('login_user');
-Route::get('/login/auth', [AuthController::class, 'authenticating'])->name('authentication_user');
+Route::post('/login/auth', [AuthController::class, 'authenticating'])->name('authentication_user');
 Route::get('/register', [AuthController::class, 'register'])->name('register_user');
 Route::post('/register/auth', [AuthController::class, 'registering'])->name('registering');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout_user');
@@ -42,16 +42,16 @@ Route::group([
     Route::get('/dashboard', [DashboardController::class, 'indexDashboard'])->name('dashboard');
     Route::get('/user', [DashboardController::class, 'indexUsers'])->name('users_tab');
     Route::get('/bookLend', [DashboardController::class, 'indexBookLend'])->name('bookLend');
-    Route::get('/book', [DashboardController::class, 'indexBook'])->name('book');
+    Route::get('/books', [DashboardController::class, 'indexBook'])->name('books');
 
     // users crud
-    Route::resource('users', UserController::class);
+    Route::resource('usersMaster', UserController::class);
     
     // BookLend( Rent Book ) crud
-    Route::resource('bookLend', BookLendController::class);
+    Route::resource('bookLendMaster', BookLendController::class);
     
     // books and categories crud
-    Route::resource('books', BookController::class);
+    Route::resource('bookMaster', BookController::class);
     Route::resource('categories', CategoryController::class);
 
 });
