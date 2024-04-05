@@ -70,6 +70,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete($category->id);
+        // dd($category);
+        return redirect()->route('books')->with('success', 'Category deleted successfully.');
     }
 }

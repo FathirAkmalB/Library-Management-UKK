@@ -52,7 +52,7 @@ Route::group([
     
     // books and categories crud
     Route::resource('bookMaster', BookController::class);
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class)->except('index','create','show','edit','update');
 
 });
 

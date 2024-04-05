@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                   
+
                     <li class="flex items-center">
                         <a href="../pages/sign-in.html"
                             class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
@@ -379,34 +379,48 @@
                             <span class="font-semibold">12</span> Category
                         </p>
                     </div>
-                    <button data-modal-target="add-category" data-modal-toggle="add-category" type="button" class="text-sm text-purple-500 font-medium">Add new</button>
+                    <button data-modal-target="add-category" data-modal-toggle="add-category" type="button"
+                        class="text-sm text-purple-500 font-medium">Add new</button>
                 </div>
                 <div class="flex-auto p-4"style="max-height: 350px; overflow-y: auto;">
-                    <div
-                        class="before:border-r-solid relative before:absolute before:top-0 before:left-4 ">
+                    <div class="before:border-r-solid relative before:absolute before:top-0 before:left-4 ">
                         <div class="relative mb-4 mt-0 ">
                             <div class=" pt-1.4 lg:max-w-120 relative -top-1.5 w-auto ">
                                 <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                     <tbody class="">
                                         @foreach ($categories as $category)
-                                        <tr class="flex justify-between border-b whitespace-nowrap">
-                                            <td class="p-2 align-middle bg-transparent ">
-                                                <div class="flex px-2 py-1">
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 text-sm leading-normal">{{ $category->name }}</h6>
+                                            <tr class="flex justify-between border-b whitespace-nowrap">
+                                                <td class="p-2 align-middle bg-transparent ">
+                                                    <div class="flex px-2 py-1">
+                                                        <div class="flex flex-col justify-center">
+                                                            <h6 class="mb-0 text-sm leading-normal">{{ $category->name }}
+                                                            </h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 align-middle bg-transparent ">
-                                                <div class="flex px-2 py-1">
-                                                    <div class="flex flex-col justify-center">
-                                                        <i class="fa-solid fa-trash hover:text-red-400 cursor-pointer"></i>
+                                                </td>
+                                                <td class="p-2 align-middle bg-transparent ">
+                                                    <div class="flex px-2 py-1">
+                                                        <div class="flex flex-col justify-center">
+                                                            <form action="{{ route('categories.destroy', $category->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Are you sure you want to delete this category?')"
+                                                                    class="btn btn-danger"><a
+                                                                        href="{{ route('categories.destroy', $category->id) }}">
+                                                                        <i
+                                                                            class="fa-solid fa-trash hover:text-red-400 cursor-pointer"></i>
+                                                                    </a>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
                                         @endforeach
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
