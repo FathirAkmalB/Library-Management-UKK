@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,13 @@ class DashboardController extends Controller
 
         $user = Auth::user();
         $userData = User::all();
-        // dd($userData);  
+        $userRole = Role::all();
+
+        $userData->each(function ($user) use ($userRole) {
+            $role = $userRole->where('id', $user->role_id)->first();
+            $user->role_name = $role->name;
+        });
+
         return view('User.users', ['user' => $user, 'userData' => $userData]);
         
     }
