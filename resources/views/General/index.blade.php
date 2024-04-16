@@ -5,223 +5,234 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WiseBook</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/bookWiseIcon.png') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/bookWiseIcon.png') }}" />
+
+    <title>BookWise</title>
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|Oxygen:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <script src="https://unpkg.com/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
+    {{-- Graduate --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Graduate&display=swap"
+        rel="stylesheet">
+
+    {{-- Montserrat --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    {{-- PT Sans --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    {{-- icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #32619b;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
-<body class="is-boxed has-animations">
-    <div class="body-wrap boxed-container">
-        <header class="site-header text-light">
-            <div class="container">
-                <div class="site-header-inner">
-                    <div class="brand header-brand">
-                        <h1 class="m-0">
-                            <a href="#">
-                                <img class="header-logo-image" src="{{ asset('assets/images/logo.svg') }}"
-                                    alt="Logo">
-                            </a>
-                        </h1>
-                    </div>
+<body class="is-boxed has-animations bg-[#F5F5F5]">
+    <nav class="flex justify-between items-center w-[92%] mx-auto my-4">
+        <div class="w-1/4 h-12 content-center sm:w-4/6 md:w-5/12 lg:w-2/ xl:w-2/6">
+            <img src="{{ asset('assets/img/BookWiseLogo.png') }}" class="w-24" alt="">
+        </div>
+        <div class="w-1/4 h-12 content-center hidden sm:hidden md:block sm:w-4/6 md:w-5/12 lg:w-2/ xl:w-2/6">
+            <p class="font-[PT Sans] text-center text-sm font-bold text-gray-700">there's still a lot we don't know</p>
+        </div>
+        <div class="w-1/4 h-12 content-center sm:w-4/6 md:w-5/12 lg:w-2/ xl:w-2/6">
+            <a href="{{ route('login_user') }}">
+                <button type="button"
+                class="float-right w-20 sm:w-28 text-white bg-[#3E8CD6] hover:bg-[#3E8CD6] focus:ring-4 focus:ring-[#3E8CD6] font-bold rounded-md text-xs py-1 px-0.5 sm:px-8  sm:py-2 dark:bg-[#3E8CD6] dark:hover:bg-[#3E8CD6] focus:outline-none dark:focus:ring-[#3E8CD6]">Sign
+                in</button>
+            </a>
+        </div>
+    </nav>
+
+    <main class="w-[100%]">
+        <div class="w-[92%] mx-auto my-4">
+            <div class="relative bg-cover object-cover rounded-lg bg-center h-[60vh] flex justify-center items-center shadow-lg"
+                style="background-image: url('{{ asset('assets/img/heroImage.png') }}')">
+                <div class="text-center">
+                    <h1 class="font-[Montserrat] text-white text-xl md:text-2xl font-bold mr-14">KNOWLEDGE IS POWER</h1>
+                    <h1 class="font-[Montserrat] text-[#FFBA3C] text-xl md:text-2xl font-bold ml-14">COME FIND OUT WITH
+                        US</h1>
+                    <button type="button"
+                        class=" my-4 text-white bg-[#FFBA3C] hover:bg-[#FFBA3C] focus:ring-4 focus:ring-[#FFBA3C] text-xs py-1.5 px-2 sm:px-8  sm:py-2 dark:bg-[#FFBA3C] dark:hover:bg-[#FFBA3C] focus:outline-none dark:focus:ring-[#FFBA3C]">Explore
+                        Your Mastery</button>
                 </div>
             </div>
-        </header>
 
-        <main>
-            <section class="hero text-center text-light">
-                <div class="hero-bg"></div>
-                <div class="hero-particles-container">
-                    <canvas id="hero-particles"></canvas>
-                </div>
-                <div class="container-sm">
-                    <div class="hero-inner">
-                        <div class="hero-copy">
-                            <h1 class="hero-title mt-0">Be wise with WiseBook</h1>
-                            <p class="hero-paragraph">WiseBook is library that provide you to know everything in the
-                                world.</p>
-                            <p class="hero-paragraph"></p>
-                            <div class="hero-cta">
-                                <a class="button button-primary button-wide-mobile" onclick="scrollToSection('section1')">Get Started</a>
-                            </div>
-                        </div>
-                        <div class="mockup-container">
-                            <div class="mockup-bg">
-                                <img src="{{ asset('assets/images/iphone-hero-bg.svg') }}" alt="iPhone illustration">
-                            </div>
-                            <img class="device-mockup" src="{{ asset('assets/images/iphone-hero.png') }}"
-                                alt="iPhone Hero">
-                        </div>
+
+
+            <div class="w-full justify-between inline-flex flex-col md:flex md:flex-row md:justify-between my-14 ">
+                <div class="w-full h-fit md:w-[45%] md:h-[50vh] inline-flex flex-col justify-between">
+                    <div>
+                        <h2 class="font-[Graduate] font-medium text-2xl text-[#3E8CD6]">BookWise</h2>
+                        <h3 class="font-[Montserrat] font-medium text-lg text-black">Library</h3>
                     </div>
-                </div>
-            </section>
-
-            <section class="features-extended section">
-                <div class="features-extended-inner section-inner">
-                    <div class="features-extended-wrap">
-                        <div class="container">
-                            <div class="feature-extended">
-                                <div class="feature-extended-image">
-                                    <div class="mockup-bg">
-                                        <img src="{{ asset('assets/images/iphone-feature-bg-01.svg') }}"
-                                            alt="iPhone Feature 01 illustration">
-                                    </div>
-                                    <img class="device-mockup is-revealing"
-                                        src="{{ asset('assets/images/iphone-feature-01.png') }}"
-                                        alt="iPhone Feature 01">
+                    <div>
+                        <p class="text-xs text[#B4B4B4]">Welcome to BookWise Library, where knowledge unfolds as an
+                            endless
+                            adventure and
+                            wisdom flows like a river through the mind. Amidst a rich and diverse collection, BookWise
+                            is
+                            not
+                            just a library; it's a haven where curious souls and knowledge seekers feel at home. With
+                            cozy
+                            and
+                            inspirational spaces, BookWise invites every visitor to immerse themselves in the world of
+                            knowledge.</p>
+                        <div class="inline-flex justify-between w-full my-6">
+                            <div class="w-2/4 flex justify-between">
+                                <div class="w-20 h-4 flex justify-between">
+                                    <i class="fa-brands fa-square-instagram text-[#9C9C9C] mr-2"></i>
+                                    <span class="text-xs text-[#9C9C9C]">bookwise.lib</span>
                                 </div>
-                                <div class="feature-extended-body is-revealing" id="section1">
-                                    <h3 class="mt-0 mb-16">Get library on one Application.</h3>
-                                    <p class="m-0">In one WiseBook app, you can read all the books available in the WiseBook Library.</p>
-                                </div>
-                            </div>
-                            <div class="feature-extended">
-                                <div class="feature-extended-image">
-                                    <div class="mockup-bg">
-                                        <img src="{{ asset('assets/images/iphone-feature-bg-02.svg') }}"
-                                            alt="iPhone Feature 02 illustration">
-                                    </div>
-                                    <img class="device-mockup is-revealing"
-                                        src="{{ asset('assets/images/iphone-feature-02.png') }}"
-                                        alt="iPhone Feature 02">
-                                </div>
-                                <div class="feature-extended-body is-revealing">
-                                    <h3 class="mt-0 mb-16">Book Lend</h3>
-                                    <p class="m-0">Bring books from the WiseBook library to read at home and study from home.</p>
+                                <div class="w-20 h-4 flex justify-between">
+                                    <i class="fa-brands fa-facebook text-[#9C9C9C] mr-2"></i>
+                                    <span class="text-xs text-[#9C9C9C]">bookwise.lib</span>
                                 </div>
                             </div>
-                            <div class="feature-extended">
-                                <div class="feature-extended-image">
-                                    <div class="mockup-bg">
-                                        <img src="{{ asset('assets/images/iphone-feature-bg-03.svg') }}"
-                                            alt="iPhone Feature 03 illustration">
-                                    </div>
-                                    <img class="device-mockup is-revealing"
-                                        src="{{ asset('assets/images/iphone-feature-03.png') }}"
-                                        alt="iPhone Feature 03">
-                                </div>
-                                <div class="feature-extended-body is-revealing">
-                                    <h3 class="mt-0 mb-16">Book Hunt</h3>
-                                    <p class="m-0">Find your favorite book and try to read it whenever and wherever you want.</p>
-                                </div>
-                            </div>
-                            <div class="feature-extended">
-                                <div class="feature-extended-image">
-                                    <div class="mockup-bg">
-                                        <img src="{{ asset('assets/images/iphone-feature-bg-04.svg') }}"
-                                            alt="iPhone Feature 04 illustration">
-                                    </div>
-                                    <img class="device-mockup is-revealing"
-                                        src="{{ asset('assets/images/iphone-feature-04.png') }}"
-                                        alt="iPhone Feature 04">
-                                </div>
-                                <div class="feature-extended-body is-revealing">
-                                    <h3 class="mt-0 mb-16">Book Storage</h3>
-                                    <p class="m-0">All the books you've read or brought can be recalled because they are neatly organized with book storage.</p>
-                                </div>
+                            <div class="w-28 h-4 flex justify-between">
+                                <span class="text-xs text-[#3E8CD6]">Go to BookWise</span>
+                                <i class="fa-solid fa-arrow-right-long text-[#3E8CD6] mr-2"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
-
-        <footer class="site-footer">
-            <div class="footer-particles-container">
-                <canvas id="footer-particles"></canvas>
-            </div>
-            <div class="site-footer-top">
-                <section class="cta section text-light">
-                    <div class="container-sm">
-                        <div class="cta-inner section-inner">
-                            <div class="cta-header text-center">
-                                <h2 class="section-title mt-0">Join Now!</h2>
-                                <p class="section-paragraph">The only thing you absolutely join with WiseBook.</p>
-                                <div class="flex justify-evenly">
-                                    <div class="cta-cta">
-                                        <a class="button bg-transparent button-primary border-blue-800 border-solid button-wide-mobile" href="{{ route('login_user') }}">Join with WiseBook</a>
-                                    </div>
-                                    <div class="cta-cta">
-                                        <a class="button button-primary button-wide-mobile" href="{{ asset('assets/apk/WiseBook.apk') }}" title="download" download>Get WiseBook App</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="site-footer-bottom">
-                <div class="container">
-                    <div class="site-footer-inner">
-                        <div class="brand footer-brand">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/logo.svg') }}" alt="Venus logo">
-                            </a>
-                        </div>
-                        <ul class="footer-links list-reset">
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                            <li>
-                                <a href="#">About us</a>
-                            </li>
-                            <li>
-                                <a href="#">FAQ's</a>
-                            </li>
-                            <li>
-                                <a href="#">Support</a>
-                            </li>
-                        </ul>
-                        <ul class="footer-social-links list-reset">
-                            <li>
-                                <a href="#">
-                                    <span class="screen-reader-text">Facebook</span>
-                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z"
-                                            fill="#FFF" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="screen-reader-text">Twitter</span>
-                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z"
-                                            fill="#FFF" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="screen-reader-text">Google</span>
-                                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z"
-                                            fill="#FFF" />
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="footer-copyright">&copy; 2024 WiseBook, all right reserved</div>
-                    </div>
+                <div
+                    class="bg-red-600-400 my-20 md:my-0 relative rounded-lg bg-center w-2/4 flex justify-center items-center">
+                    <img class="" src="{{ asset('assets/img/contentBuilding.png') }}" alt="content-building">
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
 
-    <script>
-        function scrollToSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            section.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    </script>
-    <script src="{{ asset('assets/js/main.min.js') }}"></script>
+        <div class="w-full h-[40vh] bg-[#EDEDED] inline-flex flex-col justify-center items-center my-20">
+            <p class="font-[PT Sans] w-3/5 text-xs text-[#6C6C6C] text-center my-8">“When we read, we don't just access
+                knowledge from the past; we also lay the groundwork for the future. Books are windows into an infinite
+                world of knowledge, opening doors to deeper understanding and greater achievements.”</p>
+            <span class="font-[PT Sans] text-xs text-[#6C6C6C] text-center">— Albert Einstein</span>
+        </div>
+
+        <div class="w-[92%] mx-auto  mb-20">
+            <h1 class="text-xl text-black font-[PT Sans] font-normal mb-4">Discover <span
+                    class="text-[#FFB01A] text-xl font-normal font-[PT Sans]">Books</span></h1>
+            <div class="h-0.5 w-20 bg-[#FFB01A] rounded-md mb-4"></div>
+            <div class="flex justify-between">
+                <div class="w-40 inline-flex flex-col justify-between">
+                    <div class="w-full h-[49vh]">
+                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                    </div>
+                    <div class="w-full mt-4">
+                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
+                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
+                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
+                    </div>
+                </div>
+                <div class="w-40 inline-flex flex-col justify-between">
+                    <div class="w-full h-[49vh]">
+                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                    </div>
+                    <div class="w-full mt-4">
+                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
+                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
+                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
+                    </div>
+                </div>
+                <div class="w-40 inline-flex flex-col justify-between">
+                    <div class="w-full h-[49vh]">
+                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                    </div>
+                    <div class="w-full mt-4">
+                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
+                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
+                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
+                    </div>
+                </div>
+                <div class="w-40 inline-flex flex-col justify-between">
+                    <div class="w-full h-[49vh]">
+                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                    </div>
+                    <div class="w-full mt-4">
+                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
+                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
+                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
+                    </div>
+                </div>
+                <div class="w-40 inline-flex flex-col justify-between">
+                    <div class="w-full h-[49vh]">
+                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                    </div>
+                    <div class="w-full mt-4">
+                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
+                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
+                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="w-[80%] mx-auto mb-96">
+            <h2 class="text-center text-black text-xl font-[PT Sans] font-semibold mb-4"><span class="text-[#3488D1]">Overview</span> BookWise</h2>
+            <div class="h-1 mx-auto w-16 bg-[#FFB01A] rounded-md mb-8"></div>
+            <div class="w-full flex justify-between mb-24">
+                <div class="w-[45%] h-48 rounded-lg shadow-lg">
+                    <img src="{{ asset('assets/img/roomBooks.png') }}" >
+                    <h2 class="font-[PT Sans] text-black text-sm text-center my-2">Room A</h2>
+                    <p class="font-[PT Sans] text-xs text-[#9A9A9A] text-center"><i class="fa-regular fa-map mr-2 "></i>82 Main Road London SE31 0CV</p>
+                </div>
+                <div class="w-[45%] h-48 rounded-lg shadow-lg">
+                    <img src="{{ asset('assets/img/roomBooks.png') }}" >
+                    <h2 class="font-[PT Sans] text-black text-sm text-center my-2">Room A</h2>
+                    <p class="font-[PT Sans] text-xs text-[#9A9A9A] text-center"><i class="fa-regular fa-map mr-2 "></i>82 Main Road London SE31 0CV</p>
+                </div>
+            </div>
+            <div class="w-full flex justify-between mb-24">
+                <div class="w-[45%] h-48 rounded-lg shadow-lg">
+                    <img src="{{ asset('assets/img/roomBooks.png') }}" >
+                    <h2 class="font-[PT Sans] text-black text-sm text-center my-2">Room A</h2>
+                    <p class="font-[PT Sans] text-xs text-[#9A9A9A] text-center"><i class="fa-regular fa-map mr-2 "></i>82 Main Road London SE31 0CV</p>
+                </div>
+                <div class="w-[45%] h-48 rounded-lg shadow-lg">
+                    <img src="{{ asset('assets/img/roomBooks.png') }}" >
+                    <h2 class="font-[PT Sans] text-black text-sm text-center my-2">Room A</h2>
+                    <p class="font-[PT Sans] text-xs text-[#9A9A9A] text-center"><i class="fa-regular fa-map mr-2 "></i>82 Main Road London SE31 0CV</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
 </body>
+
+<script>
+    var copy = document.querySelector(".logos-slide").cloneNode(true);
+    document.querySelector(".logos").appendChild(copy);
+</script>
 
 </html>
