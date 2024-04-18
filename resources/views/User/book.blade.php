@@ -165,199 +165,81 @@
                 <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                     <div class="flex flex-wrap mt-0 -mx-3">
                         <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
-                            <h6>Book Lend</h6>
+                            <h6>List of Books</h6>
                             <p class="mb-0 text-sm leading-normal">
                                 <i class="fa fa-check text-cyan-500"></i>
-                                <span class="ml-1 font-semibold">30 returns made</span> this month
+                                <span class="ml-1 font-semibold">{{ $booksAddedThisWeek }} book added</span> this week
                             </p>
                         </div>
                         <div class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
                             <div class="relative pr-6 lg:float-right">
-                                <a dropdown-trigger class="cursor-pointer" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v text-slate-400"></i>
-                                </a>
-                                <p class="hidden transform-dropdown-show"></p>
-
-                                <ul dropdown-menu
-                                    class="z-100 text-sm transform-dropdown shadow-soft-3xl duration-250 before:duration-350 before:font-awesome before:ease-soft min-w-44 -ml-34 before:text-5.5 pointer-events-none absolute top-0 m-0 mt-2 list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:top-0 before:right-7 before:left-auto before:z-40 before:text-white before:transition-all before:content-['\f0d8']">
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Action</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Another action</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Something else here</a>
-                                    </li>
-                                </ul>
+                                <a href="{{ route('bookMasters.create') }}"
+                                    class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25"
+                                    href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Add New Book</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex-auto p-6 px-0 pb-2">
-                    <div class="overflow-x-auto">
+                    <div class="overflow-auto scrollbar h-[50vh]">
                         <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                             <thead class="align-bottom">
                                 <tr>
                                     <th
+                                        class="px-4 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        #</th>
+                                    <th
                                         class="px-6 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        username</th>
+                                        Book</th>
                                     <th
                                         class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Rent Date</th>
-                                    <th
-                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Return Date</th>
-                                    <th
-                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                         Status</th>
+                                    <th
+                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                        Stock</th>
+                                    <th
+                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="./assets/img/small-logos/logo-xd.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
-                                                    alt="xd" />
-                                            </div>
+                                @foreach ($books as $item)
+                                    <tr>
+                                        <td class="py-2 px-4 align-middle bg-transparent border-b whitespace-nowrap">
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 text-sm leading-normal">Fathir Akmal Burhanudin</h6>
+                                                <h6 class="mb-0 text-sm leading-normal capitalize">{{ $loop->iteration }}</h6>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
-                                    </td>
-                                    <td
-                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
-                                    </td>
-                                    <td
-                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <button type="button"
-                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="./assets/img/small-logos/logo-atlassian.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
-                                                    alt="atlassian" />
-                                            </div>
+                                        </td>
+                                        <td class="py-2 px-6 align-middle bg-transparent border-b whitespace-nowrap">
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 text-sm leading-normal">Fathir Akmal Burhanudin</h6>
+                                                <h6 class="mb-0 text-sm leading-normal capitalize">{{ $item->title }}</h6>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
-                                    </td>
-                                    <td
-                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
-                                    </td>
-                                    <td
-                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <button type="button"
-                                                class="text-white bg-gradient-to-br from-pink-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Not
-                                                Complete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="./assets/img/small-logos/logo-spotify.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
-                                                    alt="spotify" />
+                                        </td>
+                                        <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
+                                        @if ($item->status == 'available')
+                                        <button type="button"
+                                        class="text-white capitalize bg-gradient-to-br from-pink-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">{{ $item->status }}</button>
+                                        @else
+                                        <button type="button"
+                                        class="text-white capitalize bg-gradient-to-br from-gray-400 -500 to-gray-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">{{ $item->status }}</button>
+                                
+                                        @endif
+                                            
+                                        </td>
+                                        <td
+                                            class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                            <span
+                                                class="text-xs font-semibold leading-tight">{{ $item->stock }}</span></span>
+                                        </td>
+                                        <td
+                                            class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
+                                            <div class="w-3/4 mx-auto">
+                                                <a href="{{ route('bookMasters.show', $item->id) }}"
+                                                    class="text-xs font-semibold leading-tight text-slate-400 mx-3">Detail</a>
                                             </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 text-sm leading-normal">Faturahman Abdul Rahad</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
-                                    </td>
-                                    <td
-                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
-                                    </td>
-                                    <td
-                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <button type="button"
-                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="./assets/img/small-logos/logo-jira.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
-                                                    alt="jira" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 text-sm leading-normal">Nama Lengkap</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
-                                    </td>
-                                    <td
-                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
-                                    </td>
-                                    <td
-                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <button type="button"
-                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="./assets/img/small-logos/logo-invision.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
-                                                    alt="invision" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 text-sm leading-normal">Nama kamu disini</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Jan 2024</span>
-                                    </td>
-                                    <td
-                                        class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <span class="text-xs font-semibold leading-tight"> 2 Feb 2024 </span>
-                                    </td>
-                                    <td
-                                        class="p-2  leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <button type="button"
-                                                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs px-3 py-1.5 text-center me-2 mb-2">Completed</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -376,13 +258,13 @@
                         <h6>Categories</h6>
                         <p class="text-sm leading-normal">
                             <i class="fa-solid fa-people-line text-lime-500"></i>
-                            <span class="font-semibold">12</span> Category
+                            <span class="font-semibold">{{ $categories->count() }}</span> Category
                         </p>
                     </div>
                     <button data-modal-target="add-category" data-modal-toggle="add-category" type="button"
                         class="text-sm text-purple-500 font-medium">Add new</button>
                 </div>
-                <div class="flex-auto p-4"style="max-height: 350px; overflow-y: auto;">
+                <div class="flex-auto p-4" style="max-height: 350px; overflow-y: auto;">
                     <div class="before:border-r-solid relative before:absolute before:top-0 before:left-4 ">
                         <div class="relative mb-4 mt-0 ">
                             <div class=" pt-1.4 lg:max-w-120 relative -top-1.5 w-auto ">
@@ -405,10 +287,10 @@
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-
                                                                 <button type="submit"
                                                                     onclick="return confirm('Are you sure you want to delete this category?')"
-                                                                    class="btn btn-danger"><a
+                                                                    class="btn btn-danger">
+                                                                    <a
                                                                         href="{{ route('categories.destroy', $category->id) }}">
                                                                         <i
                                                                             class="fa-solid fa-trash hover:text-red-400 cursor-pointer"></i>
@@ -420,7 +302,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
@@ -429,6 +310,34 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            /* CSS untuk menyesuaikan gaya scrollbar */
+            /* Style the scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 12px;
+
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #c8c8c8;
+                border-radius: 12px;
+
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+
+            }
+        </style>
     </div>
 
 
