@@ -1,5 +1,97 @@
 @extends('mainlayout.layout')
 
+@section('modal')
+    <!-- Create user modal -->
+    <div id="create-user" tabindex="-1" aria-hidden="true" style="position: absolute; z-index: 1060;"
+        class="hidden overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                    <h3 class="text-lg font-semibold text-gray-900 ">
+                        Create User <span class="text-purple-500 to-purple-600">Account</span>
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                        data-modal-toggle="create-user">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form class="p-4 md:p-5" action="{{ route('usersMaster.store') }}" enctype="multipart/form-data"
+                    method="POST">
+                    @csrf
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="col-span-2">
+                            <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username<span
+                                    class="text-red-400">*</span></label></label>
+                            <input type="text" name="username" id="username"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Type username" required="true">
+                        </div>
+                        <div class="col-span-2">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password<span
+                                    class="text-red-400">*</span></label></label>
+                            <input type="password" name="password" id="password"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                placeholder="Type password" required="true">
+                        </div>
+                        <div class="col-span-2">
+                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">No. Phone<span
+                                    class="text-red-400">*</span></label>
+                            <input type="text" name="phone" id="phone"
+                                class="bg-gray-50 border placeholder-slate-400 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                placeholder="Type phone number" required="true">
+                        </div>
+                        <div class="col-span-2">
+                            <label for="role" class="block mb-2 text-sm font-medium text-gray-900 ">User Role<span
+                                    class="text-red-400">*</span></label>
+                            <select name="role_id" id="role"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option selected disabled>Choose Role Permission</option>
+                                @foreach ($userRole as $item)
+                                <option value="{{ $item->id }}">{{ $item->role_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        <div class="col-span-2">
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Picture
+                                Profile<span class="text-red-400">*</span></label>
+                            <input
+                                class="block w-full text-sm text-gray-900 border p-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 "
+                                id="multiple_files" name="avatar" type="file" multiple>
+                        </div>
+                        <div class="col-span-2">
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Address<span
+                                    class="text-red-400">*</span></label></label>
+                            <textarea id="description" rows="4" name="address"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Type address here"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="text-white inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        Add new account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('content')
     <!-- Navbar -->
     <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
@@ -30,10 +122,6 @@
                     </div>
                 </div>
                 <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
-                    <!-- online builder btn  -->
-                    <!-- <li class="flex items-center">
-                            <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
-                          </li> -->
                     <li class="flex items-center">
                         <a href="../pages/sign-in.html"
                             class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
@@ -157,6 +245,7 @@
         </div>
     </nav>
 
+
     <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
 
@@ -166,11 +255,12 @@
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="flex justify-between">
                         <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                            <h6>Users Table List</h6>
+                            <h6>New User's <span class="text-blue-400 font-semibold">Registered</span></h6>
                         </div>
                         <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                             <button data-modal-target="create-user" data-modal-toggle="create-user" type="button"
-                                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs  px-5 py-2.5 text-center me-2 mb-2">Create User Account</button>
+                                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xs  px-5 py-2.5 text-center me-2 mb-2">Create
+                                User Account</button>
                         </div>
                     </div>
                     <div class="flex-auto px-0 pt-0 pb-2">
@@ -197,14 +287,14 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($userData as $data)
+                                    @foreach ($userInactive as $data)
                                         <tr>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2 py-1">
                                                     <div>
                                                         <img src="{{ asset('storage/' . $data->avatar) }}"
-                                                            class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl"
+                                                            class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl object-cover"
                                                             alt="user1" />
                                                     </div>
                                                     <div class="flex flex-col justify-center">
@@ -216,24 +306,26 @@
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <p class="mb-0 text-xs font-semibold leading-tight">Manager</p>
+                                                <p class="mb-0 text-xs font-semibold leading-tight capitalize">
+                                                    {{ $data->role_name }}</p>
                                                 <p class="mb-0 text-xs leading-tight text-slate-400">Organization</p>
                                             </td>
                                             <td
                                                 class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <spanpp
+                                                <span
                                                     class="bg-gradient-to-tl @if ($data->status == 'active') from-green-600 to-lime-400 @endif from-gray-600 to-gray-400  px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
                                                     {{ $data->status }}</span>
                                             </td>
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <span
-                                                    class="text-xs font-semibold leading-tight text-slate-400">23/04/18</span>
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $data->formatted_created_at }}</span>
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <a href="javascript:;"
-                                                    class="text-xs font-semibold leading-tight text-slate-400"> Edit </a>
+                                                <a href="{{ route('usersMaster.show', $data->id) }}"
+                                                    class="text-xs font-semibold leading-tight text-slate-400 mx-3">Detail</a>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -252,302 +344,175 @@
             <div class="flex-none w-full max-w-full px-3">
                 <div
                     class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <h6>Projects table</h6>
+                    <div class="flex justify-between">
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                            <h6>User <span class="text-green-400 font-semibold">Approved</span></h6>
+                        </div>
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+
+                        </div>
                     </div>
                     <div class="flex-auto px-0 pt-0 pb-2">
                         <div class="p-0 overflow-x-auto">
-                            <table
-                                class="items-center justify-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                         <th
                                             class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Project</th>
+                                            Username</th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Budget</th>
+                                            Role</th>
                                         <th
-                                            class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Status</th>
                                         <th
-                                            class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Completion</th>
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Regist Date</th>
                                         <th
-                                            class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap">
+                                            class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-spotify.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="spotify" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Spotify</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$2,500</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">working</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">60%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+
+                                    @foreach ($userActive as $data)
+                                        <tr>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <div class="flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('storage/' . $data->avatar) }}"
+                                                            class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl object-cover"
+                                                            alt="user1" />
+                                                    </div>
+                                                    <div class="flex flex-col justify-center">
+                                                        <h6 class="mb-0 text-sm leading-normal">{{ $data->username }}</h6>
+                                                        <p class="mb-0 text-xs leading-tight text-slate-400">
+                                                            {{ $data->phone }}</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <p class="mb-0 text-xs font-semibold leading-tight capitalize">
+                                                    {{ $data->role_name }}</p>
+                                                <p class="mb-0 text-xs leading-tight text-slate-400">Organization</p>
+                                            </td>
+                                            <td
+                                                class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="bg-gradient-to-tl @if ($data->status == 'active') from-green-600 to-lime-400 @endif from-gray-600 to-gray-400  px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                    {{ $data->status }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $data->formatted_created_at }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <a href="{{ route('usersMaster.show', $data->id) }}"
+                                                    class="text-xs font-semibold leading-tight text-slate-400 mx-3">Detail</a>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       
+        <div class="flex flex-wrap -mx-3">
+            <div class="flex-none w-full max-w-full px-3">
+                <div
+                    class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                    <div class="flex justify-between">
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                            <h6>User's has <span class="text-red-400 font-semibold">Banned</span></h6>
+                        </div>
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+
+                        </div>
+                    </div>
+                    <div class="flex-auto px-0 pt-0 pb-2">
+                        <div class="p-0 overflow-x-auto">
+                            <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                                <thead class="align-bottom">
                                     <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-invision.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="invision" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Invision</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$5,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">done</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">100%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                        <th
+                                            class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Username</th>
+                                        <th
+                                            class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Role</th>
+                                        <th
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Status</th>
+                                        <th
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Deleted Date</th>
+                                        <th
+                                            class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($userBanned as $data)
+                                        <tr>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <div class="flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('storage/' . $data->avatar) }}"
+                                                            class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl object-cover"
+                                                            alt="user1" />
+                                                    </div>
+                                                    <div class="flex flex-col justify-center">
+                                                        <h6 class="mb-0 text-sm leading-normal">{{ $data->username }}</h6>
+                                                        <p class="mb-0 text-xs leading-tight text-slate-400">
+                                                            {{ $data->phone }}</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-jira.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="jira" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Jira</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$3,400</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">canceled</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">30%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-red-600 to-rose-400 -mt-0.38 w-3/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="30" aria-valuemin="0"
-                                                            aria-valuemax="30"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-slack.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="slack" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Slack</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$1,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">canceled</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">0%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-0 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                                            aria-valuemax="0"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-webdev.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="webdev" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Webdev</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$14,000</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">working</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">80%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-4/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                                            aria-valuemax="80"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-xd.svg"
-                                                        class="inline-flex items-center justify-center mr-2 text-sm text-white transition-all duration-200 rounded-full ease-soft-in-out h-9 w-9"
-                                                        alt="xd" />
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-sm leading-normal">Adobe XD</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-sm font-semibold leading-normal">$2,300</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <span class="text-xs font-semibold leading-tight">done</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <div class="flex items-center justify-center">
-                                                <span class="mr-2 text-xs font-semibold leading-tight">100%</span>
-                                                <div>
-                                                    <div
-                                                        class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                        <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                            role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b-0 whitespace-nowrap shadow-transparent">
-                                            <button
-                                                class="inline-block px-6 py-3 mb-0 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none leading-pro ease-soft-in bg-150 tracking-tight-soft bg-x-25 text-slate-400"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="text-xs leading-tight fa fa-ellipsis-v"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <p class="mb-0 text-xs font-semibold leading-tight capitalize">
+                                                    @if ($data->role_id == 1)
+                                                        Admin
+                                                    @elseif($data->role_id == 2)
+                                                        Receptionist
+                                                    @else
+                                                        Client
+                                                    @endif</p>
+                                                <p class="mb-0 text-xs leading-tight text-slate-400">Organization</p>
+                                            </td>
+                                            <td
+                                                class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="bg-gradient-to-tl @if ($data->status == 'active') from-green-600 to-lime-400 @endif from-gray-600 to-gray-400  px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                                                    {{ $data->status }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $data->deleted_at }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <a href="{{ route('usersMaster.show', $data->id) }}"
+                                                    class="text-xs font-semibold leading-tight text-slate-400 mx-3">Detail</a>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -654,4 +619,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+
+            if (status === 'success') {
+                alert('User berhasil di-approve.');
+            } else if (status === 'error') {
+                alert('Gagal mengapprove pengguna.');
+            }
+        });
+    </script>
 @endsection

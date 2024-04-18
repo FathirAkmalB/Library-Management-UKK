@@ -59,23 +59,35 @@ class AuthController extends Controller
 
     public function registering(Request $request)
     {
-        $request->validate([
-            'username' => ['required', 'string', 'max:25'],
-            'password' => ['required', 'string', 'min:6'],
-            'phone' => ['max:255'],
-            'avatar' => ['required'],
-            'address' => ['required', 'max:255'],
-        ]);
+       // Validasi input
+       $request->validate([
+        'username' => ['required', 'string', 'max:25'],
+        'password' => ['required', 'string', 'min:6'],
+        'phone' => ['max:255'],
+        'address' => ['required', 'max:255'],
+        'avatar' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2000'],
+    ]);
 
-        $user = User::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'avatar' => $request->avatar,
-            'role_id' => 2
-        ]);
+    // Buat user baru
+    $data = [
+        'username' => $request->username,
+        'password' => Hash::make($request->password),
+        'phone' => $request->phone,
+        'address' => $request->address,
+        'role_id' => 2,
+    ];
 
-        return redirect()->route('login_user');
+    // Simpan gambar di direktori 'avatar' di storage public
+    if ($request->hasFile('avatar')) {
+        $fileName = uniqid() . '.' . $request->file('avatar')->getClientOriginalExtension();
+        $pathImage = $request->file('avatar')->storeAs('avatar', $fileName, 'public');
+        $data['avatar'] = $pathImage;
+    } else {
+        // Jika tidak ada file avatar yang diunggah, gunakan avatar default
+        $data['avatar'] = 'avatar/defaultProfile.png';
+    }
+
+    User::create($data);
+    return redirect()->route('login_user');
     }
 }
