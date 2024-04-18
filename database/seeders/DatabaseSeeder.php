@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Rating;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            BookSeeder::class,
+            RatingsSeeder::class,
         ]);
 
     }

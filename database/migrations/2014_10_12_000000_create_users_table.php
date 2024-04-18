@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('avatar');
             $table->string('status', 100)->default('inactive');
-           
+            $table->softDeletes();
             $table->timestamps();
         });
     }
