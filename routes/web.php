@@ -5,7 +5,9 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookLendController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RatingsController;
 use App\Http\Controllers\UserController;
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('General.index'); // landing page here
+    $books = Book::latest()->take(5)->get();
+    return view('General.index', compact('books'));
 });
 
 
@@ -42,17 +45,24 @@ Route::group([
     Route::get('/dashboard', [DashboardController::class, 'indexDashboard'])->name('dashboard');
     Route::get('/user', [DashboardController::class, 'indexUsers'])->name('users_tab');
     Route::get('/bookLend', [DashboardController::class, 'indexBookLend'])->name('bookLend');
-    Route::get('/books', [DashboardController::class, 'indexBook'])->name('books');
-
+    Route::get('/bookMaster', [DashboardController::class, 'indexBook'])->name('books');
+    Route::get('/rating-review', [DashboardController::class, 'indexReview'])->name('rating_review');
+    Route::get('/collection', [DashboardController::class, 'indexCollection'])->name('user_collection');
+    
     // users crud
     Route::resource('usersMaster', UserController::class);
+    Route::get('/approve-account/{id}', [UserController::class, 'approveUser']);
     
     // BookLend( Rent Book ) crud
-    Route::resource('bookLendMaster', BookLendController::class);
+    Route::post('/book-lend/{id}', [BookLendController::class, 'BookLend'])->name('book_lend');
+    Route::post('/return-book/{id}', [BookLendController::class, 'ReturnBook'])->name('return_book');
     
     // books and categories crud
-    Route::resource('bookMaster', BookController::class);
+    Route::resource('bookMasters', BookController::class);
     Route::resource('categories', CategoryController::class)->except('index','create','show','edit','update');
+
+    // Rating and Review
+    // Route::get('/rating', [RatingsController::class, 'ratings']);
 
 });
 

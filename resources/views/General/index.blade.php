@@ -61,11 +61,18 @@
             <p class="font-[PT Sans] text-center text-sm font-bold text-gray-700">there's still a lot we don't know</p>
         </div>
         <div class="w-1/4 h-12 content-center sm:w-4/6 md:w-5/12 lg:w-2/ xl:w-2/6">
-            <a href="{{ route('login_user') }}">
+            @if (Auth::check())
+            <a href="{{ route('dashboard') }}">
+                <button type="button"
+                class="float-right w-20 sm:w-28 text-white bg-[#3E8CD6] hover:bg-[#3E8CD6] focus:ring-4 focus:ring-[#3E8CD6] font-bold rounded-md text-xs py-1 px-0.5 sm:px-8  sm:py-2 dark:bg-[#3E8CD6] dark:hover:bg-[#3E8CD6] focus:outline-none dark:focus:ring-[#3E8CD6]">{{ Auth::user()->username }}</button>
+            </a>
+           @else
+             <a href="{{ route('login_user') }}">
                 <button type="button"
                 class="float-right w-20 sm:w-28 text-white bg-[#3E8CD6] hover:bg-[#3E8CD6] focus:ring-4 focus:ring-[#3E8CD6] font-bold rounded-md text-xs py-1 px-0.5 sm:px-8  sm:py-2 dark:bg-[#3E8CD6] dark:hover:bg-[#3E8CD6] focus:outline-none dark:focus:ring-[#3E8CD6]">Sign
                 in</button>
-            </a>
+            </a>   
+           @endif  
         </div>
     </nav>
 
@@ -140,56 +147,21 @@
                     class="text-[#FFB01A] text-xl font-normal font-[PT Sans]">Books</span></h1>
             <div class="h-0.5 w-20 bg-[#FFB01A] rounded-md mb-4"></div>
             <div class="flex justify-between">
-                <div class="w-40 inline-flex flex-col justify-between">
-                    <div class="w-full h-[49vh]">
-                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
+                @foreach ($books as $item)
+                <a href="{{ route('bookMasters.show', $item->id) }}">
+                    <div class="w-40 inline-flex flex-col justify-between">
+                        <div class="w-full h-[49vh]">
+                            <img src="{{ asset('storage/' . $item->cover) }}" alt="Buku" class="w-full">
+                        </div>
+                        <div class="w-full mt-2">
+                            <h6 class="text-xs font-semibold">{{ $item->title }}</h6>
+                            <h6 class="text-[12px] mb-4 text-[#FFB01A]">{{ $item->category->name }}</h6>
+                            <h6 class="text-[12px] text-[#A9A9A9]">{{ $item->status }}</h6>
+                        </div>
                     </div>
-                    <div class="w-full mt-4">
-                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
-                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
-                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
-                    </div>
-                </div>
-                <div class="w-40 inline-flex flex-col justify-between">
-                    <div class="w-full h-[49vh]">
-                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
-                    </div>
-                    <div class="w-full mt-4">
-                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
-                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
-                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
-                    </div>
-                </div>
-                <div class="w-40 inline-flex flex-col justify-between">
-                    <div class="w-full h-[49vh]">
-                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
-                    </div>
-                    <div class="w-full mt-4">
-                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
-                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
-                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
-                    </div>
-                </div>
-                <div class="w-40 inline-flex flex-col justify-between">
-                    <div class="w-full h-[49vh]">
-                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
-                    </div>
-                    <div class="w-full mt-4">
-                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
-                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
-                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
-                    </div>
-                </div>
-                <div class="w-40 inline-flex flex-col justify-between">
-                    <div class="w-full h-[49vh]">
-                        <img src="{{ asset('assets/img/Books.png') }}" alt="Buku" class="w-full">
-                    </div>
-                    <div class="w-full mt-4">
-                        <h6 class="text-xs font-semibold">The Intelligent Investor</h6>
-                        <h6 class="text-[10px] mb-4 text-[#FFB01A]">Investment</h6>
-                        <h6 class="text-[10px] text-[#A9A9A9]">Ready Stock: 4</h6>
-                    </div>
-                </div>
+                </a>
+                @endforeach
+               
 
             </div>
         </div>
